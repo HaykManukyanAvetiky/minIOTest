@@ -32,3 +32,6 @@ To see single pool setup on architecture have look at [docker-compose file](./do
 
 In order to add pool to already existing setup the pool should mutch with topology with existing one, in [extended pool docker-compose file](./docker-compose-extended-pool.yml) you will see example of adding pool with same topologie to existing single pool cluster. 
 Take into account than MinIO servers are 'aware' about each other within pool set, so doesn't matter to which server of which pool you will connect. This is perfect for using  load balancer, have look at [docker compose with NginX](./docker-compose-extended-load-balanced.yml) for more detailed info.
+
+MinIo supports comprassion for more info refer to [documentation](https://docs.min.io/docs/minio-compression-guide.html)
+Also take into account [tenant setup](https://docs.min.io/docs/multi-tenant-minio-deployment-guide.html)
