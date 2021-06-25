@@ -1,0 +1,179 @@
+version: "3.7"
+
+# starts 4 docker containers running minio minio server instances.
+# using nginx reverse proxy, load balancing, you can access
+# it through port 9000.
+services:
+  minio1:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio1
+    volumes:
+      - ./data/data1-1:/data1
+      - ./data/data1-2:/data2
+    # expose:
+    #   - "9000"
+    ports:
+      - "8998:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio2:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio2
+    volumes:
+      - ./data/data2-1:/data1
+      - ./data/data2-2:/data2
+    # expose:
+    #   - "9000"
+    ports:
+      - "8999:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio3:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio3
+    volumes:
+      - ./data/data3-1:/data1
+      - ./data/data3-2:/data2
+    # expose:
+    #   - "9000"
+    ports:
+      - "9001:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio4:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio4
+    volumes:
+      - ./data/data4-1:/data1
+      - ./data/data4-2:/data2
+    ports:
+      - "9002:9000"
+    # expose:
+    #   - "9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio5:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio5
+    volumes:
+      - ./data/data5-1:/data1
+      - ./data/data5-2:/data2
+    ports:
+      - "9003:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio6:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio6
+    volumes:
+      - ./data/data6-1:/data1
+      - ./data/data6-2:/data2
+    # expose:
+    #     - "9000"
+    ports:
+      - "9004:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio7:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio7
+    volumes:
+      - ./data/data7-1:/data1
+      - ./data/data7-2:/data2
+    # expose:
+    #   - "9000"
+    ports:
+        - "9005:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio8:
+    image: minio/minio:RELEASE.2021-06-17T00-10-46Z
+    hostname: minio8
+    volumes:
+      - ./data/data8-1:/data1
+      - ./data/data8-2:/data2
+    # expose:
+    #   - "9000"
+    ports:
+        - "9006:9000"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server http://minio{1...4}/data{1...2} http://minio{5...8}/data{1...2}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
