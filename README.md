@@ -35,3 +35,5 @@ Take into account than MinIO servers are 'aware' about each other within pool se
 
 MinIo supports comprassion for more info refer to [documentation](https://docs.min.io/docs/minio-compression-guide.html)
 Also take into account [tenant setup](https://docs.min.io/docs/multi-tenant-minio-deployment-guide.html)
+
+https://github.com/minio/minio/blob/master/docs/distributed/DESIGN.md

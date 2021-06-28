@@ -2,8 +2,9 @@ import os
 
 
 for d in range(1,9):
-    os.makedirs(f"./data/data{d}-1")
-    os.makedirs(f"./data/data{d}-2")
+    # os.makedirs(f"./data/data{d}-1")
+    # os.makedirs(f"./data/data{d}-2")
+    os.makedirs(f"./data/data{d}")
 
 
 # for d in range(1,5):
